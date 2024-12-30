@@ -1,0 +1,47 @@
+.container {
+    width: 100%;
+    max-width: calc(var(--container-width-12-col) + (16px * 2));
+    margin: 0 auto;
+    padding: 0 16px;
+    
+    @media (--min-small) {
+        max-width: calc(var(--container-width-12-col) + (24px * 2));
+        padding: 0 24px;
+    }
+
+    &--10 {
+        max-width: calc(var(--container-width-10-col) + (16px * 2));
+
+        @media (--min-small) {
+            max-width: calc(var(--container-width-10-col) + (24px * 2));
+        }
+    }
+
+    &--8 {
+        max-width: calc(var(--container-width-8-col) + (16px * 2));
+
+        @media (--min-small) {
+            max-width: calc(var(--container-width-8-col) + (24px * 2));
+        }
+    }
+
+    &--6 {
+        max-width: calc(var(--container-width-6-col) + (16px * 2));
+
+        @media (--min-small) {
+            max-width: calc(var(--container-width-6-col) + (24px * 2));
+        }
+    }
+
+    &--8-tablet {
+        @media (--min-small) {
+            max-width: calc(var(--container-width-8-col) + (24px * 2));
+        }
+    }
+
+    &--6-desk {
+        @media (--min-medium) {
+            max-width: calc(var(--container-width-6-col) + (24px * 2));
+        }
+    }
+}

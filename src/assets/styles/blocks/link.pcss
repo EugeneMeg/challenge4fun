@@ -1,0 +1,22 @@
+.link {
+    text-decoration: none;
+    color: var(--default-main-text);
+    transition: var(--t2);
+
+    &:hover {
+        color: var(--primary);
+    }
+
+    &--logo {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        @mixin weight-bold;
+
+        &:hover {
+            & .header__logo-substr {
+                color: var(--default-main-text);
+            }
+        }
+    }
+}

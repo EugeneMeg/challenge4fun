@@ -1,0 +1,23 @@
+.header {
+    padding: 16px 0;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.2);
+
+    &__in {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    &__logo-text {
+        display: none;
+        gap: 3px;
+
+        @media (--min-small) {
+            display: flex;
+        }
+    }
+
+    &__logo-substr {
+        color: var(--primary);
+    }
+}
