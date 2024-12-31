@@ -1,4 +1,6 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+    import Camera from '@/components/Camera.vue';
+</script>
 
 <template>
     <div class="match">
@@ -7,6 +9,10 @@
                 <div class="match__in">
                     <div class="title-h1">
                         Death match
+                    </div>
+
+                    <div class="match__camera">
+                        <Camera />
                     </div>
                 </div>
             </div>
