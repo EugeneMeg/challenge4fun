@@ -17,7 +17,7 @@
 import * as posenet from "@tensorflow-models/posenet";
 import * as tf from "@tensorflow/tfjs";
 
-const color = "aqua";
+const color = "#009e2b";
 const boundingBoxColor = "red";
 const lineWidth = 2;
 

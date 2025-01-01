@@ -56,21 +56,18 @@
             },
 
             async detect(net) {
-                // Get Video Properties
-                const video = this.$refs.video;
-                const videoWidth = this.$refs.video.videoWidth;
-                const videoHeight = this.$refs.video.videoHeight;
+                const pose = await net.estimateSinglePose(this.$refs.canvas);
 
-                // Set video width
-                this.$refs.video.width = videoWidth;
-                this.$refs.video.height = videoHeight;
+                this.drawCanvas(pose);
+            },
 
-                const pose = await net.estimateSinglePose(this.$refs.video);
+            drawCanvas(pose) {
+                const ctxs = this.$refs.canvasPosenet.getContext("2d");
+                this.$refs.canvasPosenet.width = 640;
+                this.$refs.canvasPosenet.height = 480;
 
-                drawKeypoints(pose["keypoints"], 0.6, ctx.value);
-                drawSkeleton(pose["keypoints"], 0.7, ctx.value);
-
-                console.log(pose);
+                drawKeypoints(pose["keypoints"], 0.6, ctxs);
+                drawSkeleton(pose["keypoints"], 0.7, ctxs);
             },
         },
     });
@@ -81,5 +78,6 @@
         <video ref="video" autoplay playsinline webkit-playsinline muted hidden></video>
 
         <canvas ref="canvas" width="640" height="480" class="camera__canvas"></canvas>
+        <canvas ref="canvasPosenet" width="640" height="480" class="camera__canvas camera__canvas--posenet"></canvas>
     </div>
 </template>
