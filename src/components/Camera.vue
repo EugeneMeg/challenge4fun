@@ -1,9 +1,8 @@
-<script setup lang="ts">
-    import { ref, onMounted } from 'vue';
+<script lang="ts">
+    import { ref, defineComponent } from 'vue';
     import  * as posenet from '@tensorflow-models/posenet';
+    import { drawSkeleton, drawKeypoints } from '@/services/utils';
 
-    const canvas = ref(null);
-    const video = ref(null);
     const ctx = ref(null);
 
     const constraints = ref({
@@ -11,66 +10,70 @@
         video: true,
     });
 
-    onMounted(async () => {
-        if (video.value && canvas.value) {
-            ctx.value = canvas.value.getContext('2d');
+    export default defineComponent({
+        mounted() {
+            this.onMounted();
+        },
+        methods: {
+            async onMounted() {
+                if (this.$refs.video && this.$refs.canvas) {
+                    ctx.value = this.$refs.canvas.getContext('2d');
 
-            await navigator.mediaDevices
-                .getUserMedia(constraints.value)
-                .then(SetStream)
-                .catch(e => {
-                    console.error(e);
-                })
-        }
-    });
+                    await navigator.mediaDevices
+                        .getUserMedia(constraints.value)
+                        .then(this.setStream)
+                        .catch(e => {
+                            console.error(e);
+                        })
 
-    function SetStream(stream) {
-        video.value.srcObject = stream;
-        video.value.play();
-
-        requestAnimationFrame(Draw);
-    };
-
-    function Draw() {
-        if (canvas.value) {
-            ctx.value.drawImage(video.value, 0, 0, canvas.value.width, canvas.value.height);
-        }
-
-        requestAnimationFrame(Draw);
-    };
-
-    // Load posenet
-    const runPosenet = async () => {
-        const net = await posenet.load({
-            architecture: 'MobileNetV1',
-            outputStride: 16,
-            inputResolution: {
-                width: 640,
-                height: 480,
+                    this.runPosenet();
+                }
             },
-            multiplier: 1.0,
-        });
 
-        setInterval(() => {
-            detect(net);
-        }, 100);
-    };
+            setStream(stream) {
+                if (this.$refs.video) {
+                    this.$refs.video.srcObject = stream;
+                    this.$refs.video.play();
 
-    const detect = async (net) => {
-        // Get Video Properties
-        const currentVideo = video.value;
-        const videoWidth = video.value.videoWidth;
-        const videoHeight = video.value.videoHeight;
+                    requestAnimationFrame(this.draw);
+                }
+            },
 
-        // Set video width
-        video.value.width = videoWidth;
-        video.value.height = videoHeight;
+            draw() {
+                if (this.$refs.video && this.$refs.canvas) {
+                    ctx.value.drawImage(this.$refs.video, 0, 0, this.$refs.canvas.width, this.$refs.canvas.height);
+                }
 
-        const pose = await net.estimateSinglePose(currentVideo);
-        console.log(pose);
-    };
+                requestAnimationFrame(this.draw);
+            },
 
-    runPosenet();
+            async runPosenet() {
+                const net = await posenet.load();
+
+                setInterval(() => {
+                    this.detect(net);
+                }, 100);
+            },
+
+            async detect(net) {
+                // Get Video Properties
+                const video = this.$refs.video;
+                const videoWidth = this.$refs.video.videoWidth;
+                const videoHeight = this.$refs.video.videoHeight;
+
+                // Set video width
+                this.$refs.video.width = videoWidth;
+                this.$refs.video.height = videoHeight;
+
+                const pose = await net.estimateSinglePose(this.$refs.video);
+
+                drawKeypoints(pose["keypoints"], 0.6, ctx.value);
+                drawSkeleton(pose["keypoints"], 0.7, ctx.value);
+
+                console.log(pose);
+            },
+        },
+    });
 </script>
 
 <template>
