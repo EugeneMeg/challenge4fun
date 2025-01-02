@@ -1,0 +1,171 @@
+@define-mixin title-common-props {
+    font-weight: var(--weight-bold);
+}
+
+@define-mixin title-h0 {
+    font-size: var(--fs-title-h0);
+    line-height: var(--lh-h0-normal);
+    @mixin title-common-props;
+}
+
+@define-mixin title-h1 {
+    font-size: var(--fs-title-h1);
+    line-height: var(--lh-h1-normal);
+    @mixin title-common-props;
+}
+
+@define-mixin title-h2 {
+    font-size: var(--fs-title-h2);
+    line-height: var(--lh-h2-normal);
+    @mixin title-common-props;
+}
+
+@define-mixin title-h3 {
+    font-size: var(--fs-title-h3);
+    line-height: var(--lh-h3-normal);
+    @mixin title-common-props;
+}
+
+@define-mixin title-h4 {
+    font-size: var(--fs-title-h4);
+    line-height: var(--lh-h4-normal);
+    @mixin title-common-props;
+}
+
+@define-mixin title-h5 {
+    font-size: var(--fs-title-h5);
+    line-height: var(--lh-h5-normal);
+    @mixin title-common-props;
+}
+
+@define-mixin title-h6 {
+    font-size: var(--fs-title-h6);
+    line-height: var(--lh-h6-normal);
+    @mixin title-common-props;
+}
+
+.title-h0 {
+    @mixin title-h0;
+}
+
+.title-h1 {
+    @mixin title-h1;
+}
+
+.title-h2 {
+    @mixin title-h2;
+}
+
+.title-h3 {
+    @mixin title-h3;
+}
+
+.title-h4 {
+    @mixin title-h4;
+}
+
+.title-h5 {
+    @mixin title-h5;
+}
+
+.title-h6 {
+    @mixin title-h6;
+}
+
+.title-h0-tablet {
+    @media (--min-small) {
+        font-size: var(--fs-title-h0);
+        line-height: var(--lh-h0-normal);
+    }
+}
+
+.title-h1-tablet {
+    @media (--min-small) {
+        font-size: var(--fs-title-h1);
+        line-height: var(--lh-h1-normal);
+    }
+}
+
+.title-h2-tablet {
+    @media (--min-small) {
+        font-size: var(--fs-title-h2);
+        line-height: var(--lh-h2-normal);
+    }
+}
+
+.title-h3-tablet {
+    @media (--min-small) {
+        font-size: var(--fs-title-h3);
+        line-height: var(--lh-h3-normal);
+    }
+}
+
+.title-h4-tablet {
+    @media (--min-small) {
+        font-size: var(--fs-title-h4);
+        line-height: var(--lh-h4-normal);
+    }
+}
+
+.title-h5-tablet {
+    @media (--min-small) {
+        font-size: var(--fs-title-h5);
+        line-height: var(--lh-h5-normal);
+    }
+}
+
+.title-h6-tablet {
+    @media (--min-small) {
+        font-size: var(--fs-title-h6);
+        line-height: var(--lh-h6-normal);
+    }
+}
+
+.title-h0-desk {
+    @media (--min-medium) {
+        font-size: var(--fs-title-h0);
+        line-height: var(--lh-h0-normal);
+    }
+}
+
+.title-h1-desk {
+    @media (--min-medium) {
+        font-size: var(--fs-title-h1);
+        line-height: var(--lh-h1-normal);
+    }
+}
+
+.title-h2-desk {
+    @media (--min-medium) {
+        font-size: var(--fs-title-h2);
+        line-height: var(--lh-h2-normal);
+    }
+}
+
+.title-h3-desk {
+    @media (--min-medium) {
+        font-size: var(--fs-title-h3);
+        line-height: var(--lh-h3-normal);
+    }
+}
+
+.title-h4-desk {
+    @media (--min-medium) {
+        font-size: var(--fs-title-h4);
+        line-height: var(--lh-h4-normal);
+    }
+}
+
+.title-h5-desk {
+    @media (--min-medium) {
+        font-size: var(--fs-title-h5);
+        line-height: var(--lh-h5-normal);
+    }
+}
+
+.title-h6-desk {
+    @media (--min-medium) {
+        font-size: var(--fs-title-h6);
+        line-height: var(--lh-h6-normal);
+    }
+}
