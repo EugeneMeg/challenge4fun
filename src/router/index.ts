@@ -9,9 +9,9 @@ const router = createRouter({
             component: () => import('@/views/HomeView.vue'),
         },
         {
-            path: '/death_match',
-            name: 'death_match',
-            component: () => import('@/views/DeathMatch.vue'),
+            path: '/death_match_squat',
+            name: 'death_match_squat',
+            component: () => import('@/views/DeathMatchSquat.vue'),
         },
     ],
 })

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-    import Camera from '@/components/Camera.vue';
+    import Squat from '@/components/death_matches/Squat.vue';
 </script>
 
 <template>
@@ -8,11 +8,11 @@
             <div class="page-block">
                 <div class="match__in">
                     <div class="title-h1">
-                        Death match
+                        Death Squat Match
                     </div>
 
                     <div class="match__camera">
-                        <Camera />
+                        <Squat />
                     </div>
                 </div>
             </div>
